@@ -1,5 +1,5 @@
 import { Component } from "react";
-import css from "./Feedback.css";
+// import css from "./Feedback.css";
 import jsonFeedback from "../json/feedback.json"
 
 export class Feedback extends Component {

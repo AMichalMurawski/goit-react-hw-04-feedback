@@ -1,20 +1,15 @@
-import css from './Board.css';
+// import css from './Board.css';
 import { Component } from 'react';
 import { Feedback } from 'components/Feedback/Feedback';
 import { Statistics } from 'components/Statistics/Statistics';
 
 export class Board extends Component{
-    static defaultProps= {
-        initialGood: 0,
-        initialNeutral: 0,
-        initialBad: 0
-    }
     constructor(props) {
         super(props);
         this.state = {
             good: 0,
-            neutral: this.props.initialNeutral,
-            bad: this.props.initialBad
+            neutral: 0,
+            bad: 0
         };
         this.handleClick=this.handleClick.bind(this)
     }
@@ -22,7 +17,6 @@ export class Board extends Component{
     handleClick(e) {
         const name = e.target.textContent.toLowerCase();
         this.setState(prevState => {
-            console.log(this.state)
             return({[name]: prevState[name] + 1})
         })
     }
@@ -32,7 +26,7 @@ export class Board extends Component{
         return (
             <div>
                 <Feedback onClick={this.handleClick} />
-                <Statistics />
+                <Statistics value={statistic} />
             </div>
         )
     }
