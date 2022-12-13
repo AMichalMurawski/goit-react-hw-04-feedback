@@ -1,18 +1,18 @@
-.btn-list{
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
+.btn-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 }
-.button{
-    font-size: 18px;
-    padding:10px;
-    border:none;
-    border-radius:10px;
+.button {
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
 }
-.button:hover{
-    background-color: lightblue;
+.button:hover {
+  background-color: lightblue;
 }
-.button:active{
-    box-shadow: inset 0 0 6px blue;
+.button:active {
+  box-shadow: inset 0 0 6px blue;
 }
