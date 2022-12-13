@@ -6,22 +6,15 @@ import { Notification } from "./Notifications/Notification";
 import css from "./css/styles.module.css"
 
 export class App extends Component {
-  constructor(props) {
-        super(props);
-        this.state = {
-            good: 0,
-            neutral: 0,
-            bad: 0
-        };
-        this.handleClick = this.handleClick.bind(this);
-        this.countTotalFeedback = this.countTotalFeedback.bind(this);
-        this.countPositiveFeedbackPercentage = this.countPositiveFeedbackPercentage.bind(this);
-    }
+    state = {
+      good: 0,
+      neutral: 0,
+      bad: 0
+    };
 
-    handleClick(e) {
-        const name = e.target.textContent.toLowerCase();
+    handleClick = option => {
         this.setState(prevState => {
-            return ({ [name]: prevState[name] + 1 })
+            return ({ [option]: prevState[option] + 1 })
         })
         this.countTotalFeedback()
     }
@@ -30,10 +23,10 @@ export class App extends Component {
         const value = Object.values(this.state);
         return value.reduce((new2, val) => new2 + val, 0)
     }
-    countPositiveFeedbackPercentage() {
+    countPositiveFeedbackPercentage = () => {
         const {good} = this.state
         const total = this.countTotalFeedback()
-        return (Math.round((good / total) * 100) + "%")
+        return (Math.round((good / total) * 100))
     }
      
 
@@ -45,7 +38,8 @@ export class App extends Component {
     <div className={css.conteiner}>
             <Section title="Please leave feedback">
               <FeedbackOptions
-                onLeaveFeedback={this.handleClick}
+                options={Object.keys(this.state)}
+                onLeaveFeedback={option => this.handleClick(option)}
               />
             </Section>
             <Section title="Statistics">

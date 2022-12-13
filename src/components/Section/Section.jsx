@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import css from "./Section.module.css"
 
 export const Section = ({ title, children }) => (
@@ -6,3 +7,11 @@ export const Section = ({ title, children }) => (
         {children}
     </section>
 )
+
+Section.propTypes = {
+    title: PropTypes.string.isRequired,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired
+}
