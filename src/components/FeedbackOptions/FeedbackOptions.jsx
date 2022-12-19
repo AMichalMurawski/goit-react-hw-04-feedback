@@ -1,29 +1,27 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
 import css from './FeedbackOptions.module.css';
 
-export class FeedbackOptions extends Component {
-  capitalizeFirstLetter = ([first, ...rest]) => {
+export function FeedbackOptions({ options, ...props }) {
+  function capitalizeFirstLetter([first, ...rest]) {
     return [first.toUpperCase(), ...rest].join('');
-  };
+  }
 
-  render() {
-    const { options } = this.props;
-    return (
-      <ul className={css['btn-list']}>
-        {options.map((option, index) => (
+  return (
+    <ul className={css['btn-list']}>
+      {options.map((option, index) => {
+        return (
           <li key={index}>
             <button
               className={css.button}
-              onClick={e => this.props.onLeaveFeedback(option)}
+              onClick={e => props.onLeaveFeedback(option)}
             >
-              {this.capitalizeFirstLetter(option)}
+              {capitalizeFirstLetter(option)}
             </button>
           </li>
-        ))}
-      </ul>
-    );
-  }
+        );
+      })}
+    </ul>
+  );
 }
 
 FeedbackOptions.propTypes = {
