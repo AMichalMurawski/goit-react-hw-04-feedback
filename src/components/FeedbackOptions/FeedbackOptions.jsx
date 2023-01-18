@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import css from './FeedbackOptions.module.css';
 
-export function FeedbackOptions({ options, ...props }) {
-  function capitalizeFirstLetter([first, ...rest]) {
+export const FeedbackOptions = ({ options, ...props }) => {
+  const capitalizeFirstLetter = ([first, ...rest]) => {
     return [first.toUpperCase(), ...rest].join('');
   }
 
